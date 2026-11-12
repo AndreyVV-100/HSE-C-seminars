@@ -56,3 +56,4 @@ dkms.conf
 
 # Makefile артефакты
 bin/
+figs/

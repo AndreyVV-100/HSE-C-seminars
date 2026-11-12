@@ -1,0 +1,7 @@
+digraph test1 {
+  graph [rankdir=LR, fontname="monospace"];
+  node [shape=circle, fontname="monospace", fontsize=12];
+  edge [fontname="monospace", fontsize=10];
+
+  A [label="A"];
+}
