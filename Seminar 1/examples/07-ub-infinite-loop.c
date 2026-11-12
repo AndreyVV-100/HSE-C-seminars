@@ -4,9 +4,7 @@
 
 #include <stdio.h>
 
-void unreachable_function(void) {
-  printf("You would never see this!\n");
-}
+void unreachable_function(void);
 
 int main(void) {
   unsigned int x = 0;
@@ -18,4 +16,8 @@ int main(void) {
   printf("loop ended, x = %u\n", x);
   unreachable_function();
   return 0;
+}
+
+void unreachable_function(void) {
+  printf("You would never see this!\n");
 }
