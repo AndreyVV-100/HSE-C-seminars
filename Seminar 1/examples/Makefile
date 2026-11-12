@@ -1,4 +1,5 @@
 CC = clang
+GCC = gcc
 FLAGS = -Wall -Wextra
 BIN = bin
 
@@ -14,6 +15,7 @@ $(BIN):
 
 run: | $(BIN)
 	@echo "Компилятор: `$(CC) --version | head -1`"
+	@echo "Компилятор: `$(GCC) --version | head -1`"
 	@echo
 	@echo "═══ 01-hello-world.c — простейшая программа"
 	@$(CC) $(FLAGS) 01-hello-world.c -o $(BIN)/01-hello-world && ./$(BIN)/01-hello-world
@@ -43,3 +45,8 @@ run: | $(BIN)
 	@$(CC) $(FLAGS) -O0 07-ub-infinite-loop.c -o $(BIN)/07-loop-o0 && (timeout 2 ./$(BIN)/07-loop-o0; echo "[код выхода $$?]")
 	@echo "═══ 07-ub-infinite-loop.c при -O2: цикл удалён, код выхода — мусор"
 	@$(CC) $(FLAGS) -O2 07-ub-infinite-loop.c -o $(BIN)/07-loop-o2 && (timeout 2 ./$(BIN)/07-loop-o2; echo "[код выхода $$?]")
+	@echo
+	@echo "═══ 08-unspec.c — clang: аргументы вычисляются слева направо"
+	@$(CC) $(FLAGS) -O0 08-unspec.c -o $(BIN)/08-unspec-clang && ./$(BIN)/08-unspec-clang; echo
+	@echo "═══ 08-unspec.c — gcc: тот же код, обратный порядок (порядок не определён)"
+	@$(GCC) $(FLAGS) -O0 08-unspec.c -o $(BIN)/08-unspec-gcc && ./$(BIN)/08-unspec-gcc; echo
